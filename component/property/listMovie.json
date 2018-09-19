@@ -1,0 +1,85 @@
+{
+    "list_movie":[
+        {
+            "id":1,
+            "image":"https://www.cgv.id/uploads/movie/compressed/18010200.jpg",
+            "rating":"Rating: ★★★★★",
+            "judul":"Avengers: Infinity War",
+            "sinopsis":"para Avenger akan menghadapi bahaya baru yang muncul dari bayang-bayang kosmik: Thanos.Ia merupakan penguasa lalim yang menyerang bumi dengan tujuan mengumpulkan keenam infinity stones. Gamora membuka cuplikan trailer dengan mendeskripsikan misi kejam dari Thanos.'Sepanjang waktu saya mengenalnya, dia hanya punya satu tujuan: menyapu setengah alam semesta.",
+            "pemeran" :" Robert Downey Jr.,\n Chris Hemsworth,\n Mark Ruffalo, \n Chris Evans, \n Scarlett Johansson, \n Tom Holland,\n Chadwick Boseman, \n Elizabeth Olsen.. ",
+            "jam_tayang":"13 September 2018 \n 17:00 - 19:45 WIB "
+        },
+        {
+            "id":2,            
+            "image":"https://upload.wikimedia.org/wikipedia/en/5/5e/Spider-Man_Into_the_Spider-Verse_poster.jpeg",
+            "rating":"Rating: ★★★★",
+            "judul":"Spider-Man",
+            "sinopsis":"Spider-Man: Homecoming adalah film superhero terbaru yang didasarkan pada karakter Marvel Comics yang sangat terkenal, si manusia laba-laba alias Spider-Man. Film ini mengisahkan bagaimana Peter Parker berusaha menyeimbangkan kehidupannya sebagai anak sekolah dengan kehidupannya sebagai Spider-Man. Dia harus menghadapi ancaman nyata dari Vulture yang jahat.",
+            "pemeran" :" Tom Holland,\n Michael Keaton,\n Jon Favreau,\n Zendaya,\n Donald Glover,\n Tyne Daly,\n Marisa Tomei,\n Robert Downey Jr..",
+            "jam_tayang":"15 September 2018\n 13:00 - 15:00 WIB "
+        },
+        {
+            "id":3,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/5/50/Poster_Teatrikal_The_Raid_2-Berandal.jpeg",
+            "rating":"Rating: ★★★",
+            "judul":"The Raid 2",
+            "sinopsis":"Rama (Iko Uwais) terus berjuang untuk melenyapkan organisasi kriminal di Jakarta. Rama yang baru saja masuk menjadi anggota polisi berhasil menumpas komplotan narkoba pada sekuel pertama The Raid. Dia kemudian direkrut oleh Bunawar (Cok Simbara) yang merupakan kepala polisi jujur dan memiliki reputasi bersih sebagai agen polisi penyamar. Rama harus meninggalkan istri dan anaknya untuk dilatih.",
+            "pemeran" :"Iko Uwais sebagai Rama,\n Arifin Putra sebagai Ucok,\n Oka Antara sebagai Eka,\n Tio sebagai Bangun,\n Alex Abbad sebagai Bejo,\n Julie Estelle sebagai Alicia,\n Ryuheisebagai Keichi,\n Kenichi sebagai Goto..",
+            "jam_tayang":"14 September 2018\n 18:00 - 20:05 WIB "
+        },
+        {
+            "id":4,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/a/ad/143753303489629_300x430.jpg",
+            "rating":"Rating: ★★★",
+            "judul":"Magic Hour",
+            "sinopsis":"Film Magic Hour menceritakan mengenai suatu petualangan cinta dari seorang Dimas (Dimas Anggara), Raina (Michelle Zudith), Toby (Rizky Nazar) serta Gweny (Nadya A. Pramudita).Suatu dikala mereka di pertemukan dengan Dimas membikin Raina mencicipi getaran cinta.Dan untuk Seiring berjalannya waktu mereka saling mencintai. Sayangnya rasa cinta yang dirasakan Raina kepada Dimas, justru membuatnya bimbang, bahkan panik..",
+            "pemeran" :" Michelle Ziudith sebagai Raina,\n Dimas Anggara sebagai Dimas,\n Rizky Nazar sebagai Toby,\n Nadya Arina sebagai Gweny.",
+            "jam_tayang":"20 September 2018\n 20:00 - 21:45 WIB "
+        },
+        {
+            "id":5,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/1/13/Jumanji_Welcome_to_the_Jungle_Poster.jpg",
+            "rating":"Rating: ★★★★",
+            "judul":"Jumanji",
+            "sinopsis":"Film berkisah tentang empat orang remaja yang ditugaskan membersihkan ruang bawah tanah sebagai hukuman dari kesalahan masing-masing yang berbeda. Di ruang bawah tanah mereka kemudia menemukan permainan Jumanji versi video vintage, permainan game yang sedang mendunia saat itu. Akhirnya mereka tertarik memainkan permainan tersebut dan memilih peran dan karakter masing-masing..",
+            "pemeran" :"Dwayne Johnson sebagai Dr. Smolder Bravestone,\n Jack Black sebagai Profesor Shelly Oberon,\n Kevin Hart sebagai Franklin,\n Karen Gillan sebagai Ruby Roundhouse,",
+            "jam_tayang":"18 September 2018\n 21:00 - 22:30 WIB "
+        },
+        {
+            "id":6,            
+            "image":"https://upload.wikimedia.org/wikipedia/en/3/34/InsidiousTheLastKey.jpg",
+            "rating":"Rating: ★★★",
+            "judul":"Insidious: The Last Key",
+            "sinopsis":"Parapsikolog Elise Rainer (Lin Shaye) yang sudah pensiun sejak peristiwa mengerikan di Insidious: Chapter 3 kini berurusan kembali dengan kegelapan dan iblis jahat. Ia bersama Specs (Leigh Whannell) dan Tucker (Angus Sampson) pulang kembali ke kampung halamannya untuk menyelidiki gangguan supranatural dirumah yang pernah ditempati Elise saat muda dulu.",
+            "pemeran" :" Lin Shaye sebagai Elise,\n Angus sebagai Tucker,\n Leigh sebagai Specs,\n Josh Stewart sebagai Gerald,\n Caitlin sebagai Imogen,\n Spencer sebagai Melissa,\n Kirk sebagai Ted...",
+            "jam_tayang":"25 September 2018\n 19:15 - 20:55 WIB "
+        },
+        {
+            "id":7,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/e/eb/MazeRunnerDeathCureFinalPoster.jpeg",
+            "rating":"Rating ★★★★★",
+            "judul":"Maze Runner: The Death Cure",
+            "sinopsis":"Thomas (Dylan O'Brien) beserta sekelompok Glader memulai sebuah misi untuk menemukan sebuah obat yang disebut 'flare'. Namun untuk dapat mencapai tujuan itu, mereka harus masuk ke Last City dan berhadapan langsung dengan WCKD yang dapat mengontrol labirin mematikan.",
+            "pemeran" :" Dylan O’Brien sebagai Thomas,\n Kaya Scodelario sebagai Teresa,\n Thomas Brodie-Sangster sebagai Newt,\n Dexter Darden sebagai Frypan...",
+            "jam_tayang":"30 September 2018\n 15:00 - 16:05 WIB "
+        },
+        {
+            "id":8,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/f/fe/Susah-Sinyal-Poster.jpg",
+            "rating":"Rating ★★★★",
+            "judul":"Susah Sinyal",
+            "sinopsis":"menceritakan tentang seorang wanita bernama Ellen, Ia adalah pengacara yang sangat sukses, yaitu seorang single parent yang jarang sekali dapat meluangkan waktu untuk anak tunggalnya yaitu Kiara, yang pada akhirnya tumbuh menjadi seorang remaja pemberontak, yang lebih banyak melampiaskan emosinya di media sosial,Mereka berdua pergi ke Sumba, untuk menghabiskan saat-saat menyenangkan berdua...",
+            "pemeran" :" Adinia Wirasti sebagai Ellen,\n Ernest Prakasa sebagai Iwan,\n Aurora Ribero sebagai Kiara,\n Abdur Arsyad sebagai Yos,\n Arie Kriting sebagai Melki..",
+            "jam_tayang":"28 September 2018\n 14:20 - 15:45 WIB "
+        },
+        {
+            "id":9,            
+            "image":"https://upload.wikimedia.org/wikipedia/id/e/e5/London_love_story_3.jpeg",
+            "rating":"Rating ★★★★",
+            "judul":"London Love Story 3",
+            "sinopsis":" bercerita tentang melanjutakan perjalanan cinta Caramel (Michelle Ziudith) dan Dave (Dimas Anggara) yang memasuki babak baru. Setelah dua tahun mereka berdua menjalin percintaan, akhirnya Dave memutuskan untuk melamar Caramel. Mendengar kabar tersebut perasaan hati Caramel bahagia sekali. Keduanya pun membuat sebuah kesepakatan untuk pulang dari London, Inggris ke Jakarta...",
+            "pemeran" :" Dimas Anggara sebagai Dave,\n Michelle Ziudith sebagai Caramel,\n Derby Romero sebagai Dokter Rio,\n Amanda Rawless sebagai Dokter Mia...",
+            "jam_tayang":" 1 Oktober 2018\n 11:30 - 13:00 WIB "
+        }
+    ]
+}
