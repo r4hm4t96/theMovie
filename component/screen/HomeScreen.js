@@ -5,7 +5,8 @@ import ElevatedView from 'react-native-elevated-view'
 import Icon from 'react-native-vector-icons/Entypo';
 import IconBadge from 'react-native-icon-badge';
 import { connect } from 'react-redux';
-import { getNotifications } from '../redux/actions/ActNotification';
+import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
+import * as appActions from '../redux/actions';
 import _ from 'lodash';
 import { StackActions, NavigationActions } from 'react-navigation';
 
@@ -47,7 +48,7 @@ class HomeScreen extends Component {
 //   } 
 
   componentDidMount = () => {
-      console.log("this unread = "+this.props.unreadNotifications);
+      console.log("this redux count = "+this.props.notifState.notif_count);
     // BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     const url = 'https://next.json-generator.com/api/json/get/EyteKyjDH'
     fetch(url)
@@ -109,7 +110,7 @@ class HomeScreen extends Component {
                     </View>
                 }
                 BadgeElement={
-                    <Text style={{color:'#FFFFFF'}}>{this.props.unreadNotifications.length.toString()}</Text>
+                    <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                 }
                 Hidden={this.state.BadgeCount==0}/>         
           </TouchableOpacity>
@@ -128,19 +129,16 @@ class HomeScreen extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
-    // console.log(state);
-    // console.log(props);
-    return {
-        unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
-    }
+function mapStateToProps(state, ownProps) {
+	return {
+        notifState: state.notification,
+	};
 }
 
-function mapDispatchToProps(dispatch, props) {
-    // return bindActionCreators(Actions, dispatch);
-    return {
-        // getNotification: () => Actions.getNotification(dispatch),
-    };
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(appActions, dispatch)
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

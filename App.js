@@ -19,7 +19,14 @@ import firebase from 'react-native-firebase';
 import type { Notification, } from 'react-native-firebase';
 import {StackNavigator} from 'react-navigation';
 import {Provider} from 'react-redux';
-import store from './component/redux'
+import {createStore, applyMiddleware, combineReducers} from "redux";
+//import store from './component/redux';
+import thunk from "redux-thunk";
+import * as reducers from './component/redux/reducers/index';
+import * as appActions from './component/redux/actions/index';
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const reducer = combineReducers(reducers);
+const store = createStoreWithMiddleware(reducer);
 
 // YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
 
