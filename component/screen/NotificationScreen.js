@@ -15,6 +15,7 @@ import IconBadge from 'react-native-icon-badge';
 import { connect } from 'react-redux';
 import { getNotifications } from '../redux/actions/ActNotification';
 import _ from 'lodash';
+import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
 import * as Actions from '../redux/actions';
 import {DB_LOCAL_USER} from '../property/constant';
 
@@ -70,20 +71,20 @@ const dataNotif = [
         //     })
     }
 
-    readUnread = (item) => {
-        // console.log(item)
-        this.props.setNotification(item)
-            .then(returnData => {
+    // readUnread = (item) => {
+    //     // console.log(item)
+    //     this.props.setNotification(item)
+    //         .then(returnData => {
                
-            })
-            .catch(error => {
-                this.setTimeout(true);
-            })
-    }
+    //         })
+    //         .catch(error => {
+    //             this.setTimeout(true);
+    //         })
+    // }
 
     renderItem = ({ item, index }) => {
         return (
-            <TouchableOpacity activeOpacity={0.9} onPress={ this.readUnread(item)}>   
+            <TouchableOpacity activeOpacity={0.9}>   
                 <View style={{ width: "100%", height: 70, backgroundColor: '#fff',margin:5}}>
                     <Text style={{ fontSize: 34, marginTop: 8,textAlign:'center', color: '#998DE6' }}>{item.title}</Text>
                 </View>
@@ -105,7 +106,7 @@ const dataNotif = [
                                     </View>
                                 }
                                 BadgeElement={
-                                    <Text style={{color:'#FFFFFF'}}>{this.props.unreadNotifications.length.toString()}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                                 }
                                 Hidden={this.state.BadgeCount==0}/>
                         </TouchableOpacity>
@@ -126,15 +127,15 @@ const dataNotif = [
         // console.log(state);
         // console.log(props);
         return {
-
-            unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
+            notifState: state.notification,
         }
     } 
 
     function mapDispatchToProps(dispatch, props) {
       return{
         getNotification: () => Actions.getNotification(dispatch),
-        setNotification: (item) => Actions.setNotification(dispatch, item),
+        actions: bindActionCreators(Actions, dispatch)
+        // setNotification: (item) => Actions.setNotification(dispatch, item),
       };
     }
 
