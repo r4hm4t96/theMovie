@@ -2,7 +2,7 @@ import * as types from '../actions/actiontypes';
 import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
-    notif_count: 3
+    notif_count: 2
   });
   
   export function notification(state = initialState, action = {}) {
