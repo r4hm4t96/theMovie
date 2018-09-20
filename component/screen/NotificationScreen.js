@@ -12,10 +12,10 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo'
 import IconBadge from 'react-native-icon-badge';
-import { connect } from 'react-redux';
-import { getNotifications } from '../redux/actions/ActNotification';
 import _ from 'lodash';
-import * as Actions from '../redux/actions';
+import { connect } from 'react-redux';
+import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
+import * as appActions from '../redux/actions';
 import {DB_LOCAL_USER} from '../property/constant';
 
 const WINDOW = Dimensions.get('window');
@@ -71,14 +71,14 @@ const dataNotif = [
     }
 
     readUnread = (item) => {
-        // console.log(item)
-        this.props.setNotification(item)
-            .then(returnData => {
+        // // console.log(item)
+        // this.props.setNotification(item)
+        //     .then(returnData => {
                
-            })
-            .catch(error => {
-                this.setTimeout(true);
-            })
+        //     })
+        //     .catch(error => {
+        //         this.setTimeout(true);
+        //     })
     }
 
     renderItem = ({ item, index }) => {
@@ -105,7 +105,7 @@ const dataNotif = [
                                     </View>
                                 }
                                 BadgeElement={
-                                    <Text style={{color:'#FFFFFF'}}>{this.props.unreadNotifications.length.toString()}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                                 }
                                 Hidden={this.state.BadgeCount==0}/>
                         </TouchableOpacity>
@@ -113,7 +113,7 @@ const dataNotif = [
 
             <View>
                 <FlatList 
-                    data={dataNotif}
+                    data={this.props.notifState.notif_data}
                     renderItem={this.renderItem}
                     keyExtractor={(item,index)=> index.toString()}/>
             </View>
@@ -123,18 +123,17 @@ const dataNotif = [
     }
   
     function mapStateToProps(state, props) {
-        // console.log(state);
-        // console.log(props);
         return {
-
-            unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
+            notifState: state.notification,
+            // unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
         }
     } 
 
     function mapDispatchToProps(dispatch, props) {
       return{
-        getNotification: () => Actions.getNotification(dispatch),
-        setNotification: (item) => Actions.setNotification(dispatch, item),
+        // getNotification: () => Actions.getNotification(dispatch),
+        // setNotification: (item) => Actions.setNotification(dispatch, item),
+        actions: bindActionCreators(appActions, dispatch)
       };
     }
 

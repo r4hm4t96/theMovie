@@ -48,6 +48,10 @@ class HomeScreen extends Component {
 //   } 
 
   componentDidMount = () => {
+      //read notif based on reducer
+      var count = this.props.notifState.notif_data.filter(value => value.read === false).length;
+      this.props.actions.setNotifCount(count);
+      console.log("count = "+count);
       console.log("this redux count = "+this.props.notifState.notif_count);
     // BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     const url = 'https://next.json-generator.com/api/json/get/EyteKyjDH'
