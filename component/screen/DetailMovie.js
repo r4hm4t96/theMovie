@@ -4,6 +4,8 @@ import ElevatedView from 'react-native-elevated-view'
 import Icon from 'react-native-vector-icons/Entypo';
 import IconBadge from 'react-native-icon-badge';
 import { connect } from 'react-redux';
+import * as appActions from '../redux/actions';
+import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
 import _ from 'lodash';
 
 const WINDOW = Dimensions.get('window');
@@ -39,7 +41,7 @@ class DetailMovie extends Component {
                       </View>    
                   }
                   BadgeElement={
-                      <Text style={{color:'#FFFFFF'}}>{this.props.unreadNotifications.length.toString()}</Text>
+                      <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                   }
                   Hidden={this.state.BadgeCount==0}/>
           </TouchableOpacity>
@@ -83,17 +85,18 @@ class DetailMovie extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state,ownProps) {
   // console.log(state);
   // console.log(props);
   return {
-      unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
+    notifState: state.notification,
   }
 }
 
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
   // return bindActionCreators(Actions, dispatch);
   return {
+    actions: bindActionCreators(appActions, dispatch)
       // getNotification: () => Actions.getNotification(dispatch),
   };
 }
