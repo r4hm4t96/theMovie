@@ -86,14 +86,14 @@ export function changeNotifCount(notif_count) {
     };
 }
 
-export function changeNotifRead(notif-read) {
+export function changeNotifRead(notif_read) {
     return {
       type: types.SET_NOTIFICATIONS, 
       notif_read: notif_read
     };
 }
 
-export function changeNotifRead(notif-unread) {
+export function changeNotifRead(notif_unread) {
     return {
       type: types.SET_NOTIFICATIONS, 
       notif_unread: notif_unread
