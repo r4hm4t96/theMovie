@@ -3,6 +3,8 @@ import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
     notif_count: 0,
+    notif_read: true,
+    notif_unread:false,
     notif_data: [
                   {
                       id:2,
@@ -22,7 +24,12 @@ const initialState = Immutable({
                   {
                       id:5,
                       title:"Announcement 5",
-                      read:true
+                      read:false
+                  },
+                  {
+                      id:6,
+                      title:"Announcement 6",
+                      read:false
                   }
                 ]
 });
@@ -35,7 +42,14 @@ const initialState = Immutable({
         return state.merge({
           notif_count: action.notif_count,
         });
-  
+      case types.SET_NOTIFICATIONS:
+        return state.merge({
+          notif_read: action.notif_read,
+        })
+      case types.SET_NOTIFICATIONS:
+        return state.merge({
+          notif_unread: action.notif_unread,
+        })
       default:
         return state;
     }

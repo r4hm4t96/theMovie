@@ -86,10 +86,17 @@ export function changeNotifCount(notif_count) {
     };
 }
 
-export function changeNotifValues(notif_values) {
+export function changeNotifRead(notif-read) {
     return {
       type: types.SET_NOTIFICATIONS, 
-      notif_values: notif_values
+      notif_read: notif_read
+    };
+}
+
+export function changeNotifRead(notif-unread) {
+    return {
+      type: types.SET_NOTIFICATIONS, 
+      notif_unread: notif_unread
     };
 }
 
@@ -100,9 +107,16 @@ export function setNotifCount(count) {
     };
 }
 
-export function setNotifValues(values) {
+export function setNotifRead(read) {
     return async function(dispatch, getState) {
         // login logic would go here, and when it's done, we switch app roots
-        dispatch(changeNotifValues(values));
+        dispatch(changeNotifRead(read));
+    };
+}
+
+export function setNotifRead(unread) {
+    return async function(dispatch, getState) {
+        // login logic would go here, and when it's done, we switch app roots
+        dispatch(changeNotifRead(unread));
     };
 }
