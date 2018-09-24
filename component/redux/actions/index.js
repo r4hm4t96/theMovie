@@ -86,9 +86,23 @@ export function changeNotifCount(notif_count) {
     };
 }
 
+export function changeNotifValues(notif_values) {
+    return {
+      type: types.SET_NOTIFICATIONS, 
+      notif_values: notif_values
+    };
+}
+
 export function setNotifCount(count) {
     return async function(dispatch, getState) {
         // login logic would go here, and when it's done, we switch app roots
         dispatch(changeNotifCount(count));
+    };
+}
+
+export function setNotifValues(values) {
+    return async function(dispatch, getState) {
+        // login logic would go here, and when it's done, we switch app roots
+        dispatch(changeNotifValues(values));
     };
 }
