@@ -8,28 +8,28 @@ const initialState = Immutable({
     notif_data: [
                   {
                       id:1,
-                      title:"Announcement 2",
+                      title:"Announcement 1",
                       read:false
                   },
                   {
                       id:2,
-                      title:"Announcement 3",
+                      title:"Announcement 2",
                       read:false
                   },
                   {
                       id:3,
-                      title:"Announcement 4",
+                      title:"Announcement 3",
                       read:true
                   },
                   {
                       id:4,
-                      title:"Announcement 5",
+                      title:"Announcement 4",
                       read:false
                   },
                   {
                       id:5,
-                      title:"Announcement 6",
-                      read:false
+                      title:"Announcement 5",
+                      read:true
                   }
                 ]
 });
