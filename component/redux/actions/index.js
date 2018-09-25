@@ -93,7 +93,7 @@ export function changeNotifRead(notif_read) {
     };
 }
 
-export function changeNotifRead(notif_unread) {
+export function changeNotifUnread(notif_unread) {
     return {
       type: types.SET_NOTIFICATIONS, 
       notif_unread: notif_unread
@@ -114,9 +114,9 @@ export function setNotifRead(read) {
     };
 }
 
-export function setNotifRead(unread) {
+export function setNotifUnread(unread) {
     return async function(dispatch, getState) {
         // login logic would go here, and when it's done, we switch app roots
-        dispatch(changeNotifRead(unread));
+        dispatch(changeNotifUnread(unread));
     };
 }
