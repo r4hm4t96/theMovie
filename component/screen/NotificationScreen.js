@@ -16,81 +16,87 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
 import * as appActions from '../redux/actions';
+import {notification} from '../redux/reducers/notificationReducer';
 import {DB_LOCAL_USER} from '../property/constant';
 
 const WINDOW = Dimensions.get('window');
 
-const dataNotif = [
-    {
-        id:2,
-        title:"Announcement 2",
-        read:false
-    },
-    {
-        id:3,
-        title:"Announcement 3",
-        read:false
-    },
-    {
-        id:4,
-        title:"Announcement 4",
-        read:true
-    },
-    {
-        id:5,
-        title:"Announcement 5",
-        read:true
-    }
-]
+// const dataNotif = [
+//     {
+//         id:2,
+//         title:"Announcement 2",
+//         read:false
+//     },
+//     {
+//         id:3,
+//         title:"Announcement 3",
+//         read:false
+//     },
+//     {
+//         id:4,
+//         title:"Announcement 4",
+//         read:true
+//     },
+//     {
+//         id:5,
+//         title:"Announcement 5",
+//         read:true
+//     }
+// ]
 
+ class ListItem extends Component {
+    constructor(props){
+        super(props);
+        console.log(props)
+    this.state = {
+        selected: !props.read,
+     }
+    }
+    
+
+     _onPress = () => {
+        this.setState({
+            selected: !this.state.selected
+        })
+    };
+    
+    render = () => {
+        const viewStyle = this.state.selected ?
+            styles.textNormal : styles.textBold;
+        console.log(this.state.selected);
+        return (
+            <TouchableOpacity onPress={this._onPress}>   
+                <View style={{ width: "100%", height: 70, backgroundColor: '#fff',margin:5,justifyContent: 'center',}}>
+                    <Text style={viewStyle }>{this.props.title}</Text>
+                </View>
+            </TouchableOpacity>
+            )
+        }
+ }
 
  class NotificationScreen extends Component {
     constructor(props){
         super(props);
         this.state={
-            BadgeCount:2
+            BadgeCount:2,
+            // changeRead: true,
+            
         }
-        
     }
 
     componentDidMount = () => {
+       
+    }
+    
+    _keyExtractor = (item, index) => item.id;
+
+    _renderItem = ({ item,index }) => (
+        <ListItem
+            id={item.id}
+            title={item.title}
+        />
+    );
         
-        // AsyncStorage.getItem(DB_LOCAL_USER)
-        //     .then(dbUser => {
-        //         var user = JSON.stringify(dbUser);
-  
-        //     })
-        // this.props.getNotification()
-        //     .then(returnValue => {
-              
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         // this.loading.setTimeout(true);
-        //     })
-    }
-
-    readUnread = (item) => {
-        // // console.log(item)
-        // this.props.setNotification(item)
-        //     .then(returnData => {
-               
-        //     })
-        //     .catch(error => {
-        //         this.setTimeout(true);
-        //     })
-    }
-
-    renderItem = ({ item, index }) => {
-        return (
-            <TouchableOpacity activeOpacity={0.9}>   
-                <View style={{ width: "100%", height: 70, backgroundColor: '#fff',margin:5}}>
-                    <Text style={{ fontSize: 34, marginTop: 8,textAlign:'center', color: '#998DE6' }}>{item.title}</Text>
-                </View>
-            </TouchableOpacity>
-            )
-        }
-
     render() {
         return (
         <View style={{flex:1,backgroundColor:'#364854'}}>
@@ -114,14 +120,24 @@ const dataNotif = [
             <View>
                 <FlatList 
                     data={this.props.notifState.notif_data}
-                    renderItem={this.renderItem}
-                    keyExtractor={(item,index)=> index.toString()}/>
+                    renderItem={this._renderItem}
+                    extraData={this.state}
+                    keyExtractor={this._keyExtractor}/>
             </View>
         </View>
         );
       }
     }
-  
+
+    const styles = StyleSheet.create({
+        textBold:{
+            fontSize: 16,  textAlign:'center',  color: 'black', fontWeight: 'bold',
+        },
+        textNormal:{
+            fontSize: 16,  textAlign:'center',  color: 'black', fontWeight: 'normal',
+        }
+    })  
+    
     function mapStateToProps(state, props) {
         return {
             notifState: state.notification,
