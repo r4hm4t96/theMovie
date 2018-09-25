@@ -88,14 +88,14 @@ export function changeNotifCount(notif_count) {
 
 export function changeNotifRead(notif_read) {
     return {
-      type: types.SET_NOTIFICATIONS, 
+      type: types.SET_NOTIFICATIONS_READ, 
       notif_read: notif_read
     };
 }
 
 export function changeNotifUnread(notif_unread) {
     return {
-      type: types.SET_NOTIFICATIONS, 
+      type: types.SET_NOTIFICATIONS_UNREAD, 
       notif_unread: notif_unread
     };
 }
