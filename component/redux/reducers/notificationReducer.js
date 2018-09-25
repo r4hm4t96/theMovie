@@ -7,27 +7,27 @@ const initialState = Immutable({
     notif_unread:false,
     notif_data: [
                   {
-                      id:2,
+                      id:1,
                       title:"Announcement 2",
                       read:false
                   },
                   {
-                      id:3,
+                      id:2,
                       title:"Announcement 3",
                       read:false
                   },
                   {
-                      id:4,
+                      id:3,
                       title:"Announcement 4",
                       read:true
                   },
                   {
-                      id:5,
+                      id:4,
                       title:"Announcement 5",
                       read:false
                   },
                   {
-                      id:6,
+                      id:5,
                       title:"Announcement 6",
                       read:false
                   }
@@ -42,11 +42,11 @@ const initialState = Immutable({
         return state.merge({
           notif_count: action.notif_count,
         });
-      case types.SET_NOTIFICATIONS:
+      case types.SET_NOTIFICATIONS_READ:
         return state.merge({
           notif_read: action.notif_read,
         })
-      case types.SET_NOTIFICATIONS:
+      case types.SET_NOTIFICATIONS_UNREAD:
         return state.merge({
           notif_unread: action.notif_unread,
         })
