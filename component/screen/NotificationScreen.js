@@ -47,12 +47,13 @@ const WINDOW = Dimensions.get('window');
  class ListItem extends Component {
     constructor(props){
         super(props);
+        
         console.log(props)
     this.state = {
         selected: !props.read,
      }
     }
-    
+    //gimana mas?mas??
 
      _onPress = () => {
         this.setState({
@@ -62,10 +63,12 @@ const WINDOW = Dimensions.get('window');
     
     render = () => {
         const viewStyle = this.state.selected ?
-            styles.textNormal : styles.textBold;
+            styles.textBold : styles.textNormal;
         console.log(this.state.selected);
+        console.log(this.props.read)
         return (
-            <TouchableOpacity onPress={this._onPress}>   
+            <TouchableOpacity onPress={this._onPress}>  
+             
                 <View style={{ width: "100%", height: 70, backgroundColor: '#fff',margin:5,justifyContent: 'center',}}>
                     <Text style={viewStyle }>{this.props.title}</Text>
                 </View>
@@ -85,15 +88,16 @@ const WINDOW = Dimensions.get('window');
     }
 
     componentDidMount = () => {
-       
+    
     }
     
-    _keyExtractor = (item, index) => item.id;
+    _keyExtractor = (item, index) => item.id.toString();
 
     _renderItem = ({ item,index }) => (
         <ListItem
             id={item.id}
             title={item.title}
+            read={item.read}
         />
     );
         
