@@ -12,13 +12,6 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 const WINDOW = Dimensions.get('window');
 
-// const notif = PushNotification.localNotificationSchedule({
-//     message: message,
-//     date: date,
-//     number: ''+ someId,
-//     applicationIconBadgeNumber: 0,
-// });
-
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -65,11 +58,6 @@ class HomeScreen extends Component {
         .catch((error) => {
             console.log(error)
         })
-
-        // this.props.getNotification()
-        //     .then(returnData => {
-        //         // ambil notifikasi dari redux
-        //     })
   }
 
   handleNotif = () => {
@@ -116,7 +104,7 @@ class HomeScreen extends Component {
                 BadgeElement={
                     <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                 }
-                Hidden={this.state.BadgeCount==0}/>         
+                Hidden={this.props.notifState.notif_count==0}/>         
           </TouchableOpacity>
         </View>
 

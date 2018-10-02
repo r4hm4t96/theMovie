@@ -53,9 +53,9 @@ const WINDOW = Dimensions.get('window');
         selected: !props.read,
      }
     }
-    //gimana mas?mas??
 
      _onPress = () => {
+     
         this.setState({
             selected: !this.state.selected
         })
@@ -81,8 +81,6 @@ const WINDOW = Dimensions.get('window');
     constructor(props){
         super(props);
         this.state={
-            BadgeCount:2,
-            // changeRead: true,
             
         }
     }
@@ -117,7 +115,7 @@ const WINDOW = Dimensions.get('window');
                                 BadgeElement={
                                     <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                                 }
-                                Hidden={this.state.BadgeCount==0}/>
+                                Hidden={this.props.notifState.notif_count==0}/>
                         </TouchableOpacity>
             </View>
 
@@ -145,14 +143,11 @@ const WINDOW = Dimensions.get('window');
     function mapStateToProps(state, props) {
         return {
             notifState: state.notification,
-            // unreadNotifications: _.filter(state.notification, notification => notification.read != null && notification.read == false)
         }
     } 
 
     function mapDispatchToProps(dispatch, props) {
       return{
-        // getNotification: () => Actions.getNotification(dispatch),
-        // setNotification: (item) => Actions.setNotification(dispatch, item),
         actions: bindActionCreators(appActions, dispatch)
       };
     }
