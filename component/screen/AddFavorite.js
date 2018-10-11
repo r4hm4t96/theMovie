@@ -85,6 +85,13 @@ class AddFavorite extends Component {
     }
   }
 
+  componentDidMount = () => {
+    var count = this.props.notifState.notif_data.filter(value => value.read === false).length;
+    this.props.actions.setNotifCount(count);
+    console.log("count = "+count);
+    console.log("this redux count = "+this.props.notifState.notif_count);
+  }
+
   render() {
  
     return (
@@ -102,7 +109,7 @@ class AddFavorite extends Component {
                 BadgeElement={
                     <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                 }
-                Hidden={this.state.BadgeCount==0}/>
+                Hidden={this.props.notifState.notif_count==0}/>
           </TouchableOpacity>
         </View>
          

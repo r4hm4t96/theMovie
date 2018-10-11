@@ -23,6 +23,18 @@ class DetailMovie extends Component {
     this.props.navigation.navigate('Notifications')
   }
 
+  componentDidMount = () => {
+    // var tes = this.props.notifState.notif_data.filter(value => value.read === true).length;
+    // this.props.actions.setNotifCount(tes+3);
+    // console.log("count = "+tes);
+
+    var count = this.props.notifState.notif_data.filter(value => value.read === false).length;
+    this.props.actions.setNotifCount(count);
+    console.log("count = "+count);
+    console.log("this redux count = "+this.props.notifState.notif_count);
+
+  }
+
   handleFavorite = ()=>{
     this.props.navigation.navigate('Favorite')
   }
@@ -43,7 +55,7 @@ class DetailMovie extends Component {
                   BadgeElement={
                       <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
                   }
-                  Hidden={this.state.BadgeCount==0}/>
+                  Hidden={this.props.notifState.notif_count==0}/>
           </TouchableOpacity>
         </View>
       
