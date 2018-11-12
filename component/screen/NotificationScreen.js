@@ -11,72 +11,48 @@ import {
   AsyncStorage
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo'
-import IconBadge from 'react-native-icon-badge';
+// import IconBadge from 'react-native-icon-badge';
+import ContainBadge from '../../container/ContainBadge'
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
 import * as appActions from '../redux/actions';
 import {notification} from '../redux/reducers/notificationReducer';
-import {DB_LOCAL_USER} from '../property/constant';
+import { NOTIFICATIONS_READ, NOTIFICATIONS_UNREAD } from '../redux/actions/actiontypes';
+import ListNotif from '../../container/ListNotif';
 
 const WINDOW = Dimensions.get('window');
 
-// const dataNotif = [
-//     {
-//         id:2,
-//         title:"Announcement 2",
-//         read:false
-//     },
-//     {
-//         id:3,
-//         title:"Announcement 3",
-//         read:false
-//     },
-//     {
-//         id:4,
-//         title:"Announcement 4",
-//         read:true
-//     },
-//     {
-//         id:5,
-//         title:"Announcement 5",
-//         read:true
-//     }
-// ]
-
- class ListItem extends Component {
+class ListItem extends Component {
     constructor(props){
         super(props);
-        
         console.log(props)
     this.state = {
         selected: !props.read,
-     }
+        }
     }
 
      _onPress = () => {
-     
         this.setState({
-            selected: !this.state.selected
+            selected: !this.state.selected 
         })
     };
-    
+
     render = () => {
         const viewStyle = this.state.selected ?
             styles.textBold : styles.textNormal;
         console.log(this.state.selected);
         console.log(this.props.read)
         return (
-            <TouchableOpacity onPress={this._onPress}>  
-             
+            <TouchableOpacity onPress={this._onPress}>     
                 <View style={{ width: "100%", height: 70, backgroundColor: '#fff',margin:5,justifyContent: 'center',}}>
                     <Text style={viewStyle }>{this.props.title}</Text>
                 </View>
             </TouchableOpacity>
             )
         }
- }
-
+    }
+    
  class NotificationScreen extends Component {
     constructor(props){
         super(props);
@@ -85,10 +61,10 @@ const WINDOW = Dimensions.get('window');
         }
     }
 
-    componentDidMount = () => {
-    
+    handleNotif = () => {
+        this.props.navigation.navigate('Notifications')
     }
-    
+
     _keyExtractor = (item, index) => item.id.toString();
 
     _renderItem = ({ item,index }) => (
@@ -96,6 +72,7 @@ const WINDOW = Dimensions.get('window');
             id={item.id}
             title={item.title}
             read={item.read}
+            onPress={this.props.onPress}
         />
     );
         
@@ -105,26 +82,17 @@ const WINDOW = Dimensions.get('window');
             <View style={{backgroundColor:'steelblue',width:"100%", height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                 <View style={{width:50}}/>
                     <Image source={require('../images/splashMovie.png')} style={{alignSelf:'center',width:100,height:80,resizeMode:'contain',}}/>
-                        <TouchableOpacity>
-                            <IconBadge
-                                MainElement={
-                                    <View style={{width:35,height:50,justifyContent: 'center',}}>      
-                                    <Icon name='bell' size={28} style={{marginRight:10,color:'#fff'}}/>
-                                    </View>
-                                }
-                                BadgeElement={
-                                    <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
-                                }
-                                Hidden={this.props.notifState.notif_count==0}/>
-                        </TouchableOpacity>
+                        <ContainBadge/>                        
             </View>
-
-            <View>
                 <FlatList 
                     data={this.props.notifState.notif_data}
                     renderItem={this._renderItem}
                     extraData={this.state}
-                    keyExtractor={this._keyExtractor}/>
+                    keyExtractor={this._keyExtractor}
+                    onPress={this.props.unreadNotif}
+                    />
+            <View>
+                
             </View>
         </View>
         );
@@ -140,15 +108,17 @@ const WINDOW = Dimensions.get('window');
         }
     })  
     
-    function mapStateToProps(state, props) {
+    function mapStateToProps(state, ownProps) {
         return {
             notifState: state.notification,
         }
     } 
 
-    function mapDispatchToProps(dispatch, props) {
+    function mapDispatchToProps(dispatch) {
       return{
-        actions: bindActionCreators(appActions, dispatch)
+        actions: bindActionCreators(appActions, dispatch),
+        // readNotif: (notification)=>dispatch({type: NOTIFICATIONS_READ, payload:notification}),
+        unreadNotif: (readUnread)=>dispatch({type:NOTIFICATIONS_UNREAD, payload:readUnread})
       };
     }
 

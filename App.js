@@ -15,6 +15,7 @@ import HomeScreen from './component/screen//HomeScreen';
 import DetailMovie from './component/screen/DetailMovie';
 import AddFavorite from './component/screen/AddFavorite';
 import Notifications from './component/screen/NotificationScreen';
+// import NotificationsTest from './component/screen/NotificationTest';
 import firebase from 'react-native-firebase';
 import type { Notification, } from 'react-native-firebase';
 import {StackNavigator} from 'react-navigation';
@@ -48,10 +49,14 @@ const Root = StackNavigator({
   },
   Notifications:{
     screen: Notifications
-  }
+  },
+  // NotificationsTest:{
+  //   screen: NotificationsTest
+  // }
 },{
   initialRouteName: 'Home',
   headerMode:"none"
+  
 })
 
 export default class App extends Component {

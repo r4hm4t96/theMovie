@@ -1,7 +1,7 @@
 // import {
 //     // ADD_BADGE,DEL_BADGE,
 //     setNotifications,getNotifications} from './ActNotification';
-import * as types from './actiontypes';
+    import * as types from './actiontypes';
 // import {AsyncStorage} from 'react-native';
 
 // let newBadgeId = 0;
@@ -86,17 +86,17 @@ export function changeNotifCount(notif_count) {
     };
 }
 
-export function changeNotifRead(notif_read) {
+export function changeNotifRead() {
     return {
-      type: types.SET_NOTIFICATIONS_READ, 
-      notif_read: notif_read
+      type: types.NOTIFICATIONS_READ, 
+      payload
     };
 }
 
-export function changeNotifUnread(notif_unread) {
+export function changeNotifUnread(payload) {
     return {
-      type: types.SET_NOTIFICATIONS_UNREAD, 
-      notif_unread: notif_unread
+      type: types.NOTIFICATIONS_UNREAD, 
+      payload
     };
 }
 
@@ -104,19 +104,5 @@ export function setNotifCount(count) {
     return async function(dispatch, getState) {
         // login logic would go here, and when it's done, we switch app roots
         dispatch(changeNotifCount(count));
-    };
-}
-
-export function setNotifRead(read) {
-    return async function(dispatch, getState) {
-        // login logic would go here, and when it's done, we switch app roots
-        dispatch(changeNotifRead(read));
-    };
-}
-
-export function setNotifUnread(unread) {
-    return async function(dispatch, getState) {
-        // login logic would go here, and when it's done, we switch app roots
-        dispatch(changeNotifUnread(unread));
     };
 }

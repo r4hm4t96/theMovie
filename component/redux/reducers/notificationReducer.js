@@ -1,10 +1,11 @@
 import * as types from '../actions/actiontypes';
 import Immutable from 'seamless-immutable';
+import _ from 'lodash'
 
 const initialState = Immutable({
     notif_count: 0,
-    notif_read: true,
-    notif_unread:false,
+    // notif_read: true,
+    // notif_unread:false,
     notif_data: [
                   {
                       id:1,
@@ -30,11 +31,16 @@ const initialState = Immutable({
                       id:5,
                       title:"Announcement 5",
                       read:true
-                  }
+                  },
+                  {
+                      id:6,
+                      title:"Announcement 6",
+                      read:true
+                  },
                 ]
-});
+  });
   
-  export function notification(state = initialState, action = {}) {
+  export function notification(state = initialState, action) {
   
     switch (action.type) {
   
@@ -42,14 +48,12 @@ const initialState = Immutable({
         return state.merge({
           notif_count: action.notif_count,
         });
-      case types.SET_NOTIFICATIONS_READ:
-        return state.merge({
-          notif_read: action.notif_read,
-        })
-      case types.SET_NOTIFICATIONS_UNREAD:
-        return state.merge({
-          notif_unread: action.notif_unread,
-        })
+      case types.NOTIFICATIONS_READ:
+        notif_data = _.filter(notif_data => notif_data.id !== action.payload.id)
+        return notif_data;
+      case types.NOTIFICATIONS_UNREAD:
+        return [...state,action.payload] 
+        
       default:
         return state;
     }

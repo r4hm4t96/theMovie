@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text,Dimensions,Image,TouchableOpacity,ScrollView } from 'react-native';
 import ElevatedView from 'react-native-elevated-view' 
 import Icon from 'react-native-vector-icons/Entypo';
-import IconBadge from 'react-native-icon-badge';
+// import IconBadge from 'react-native-icon-badge';
+import ContainBadge from '../../container/ContainBadge'
 import { connect } from 'react-redux';
 import * as appActions from '../redux/actions';
 import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
@@ -45,18 +46,8 @@ class DetailMovie extends Component {
         <View style={{backgroundColor:'steelblue',width:"100%", height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
           <View style={{width:50}}/>
           <Image source={require('../images/splashMovie.png')} style={{alignSelf:'center',width:100,height:80,resizeMode:'contain',}}/>
-            <TouchableOpacity onPress={this.handleNotif}>
-              <IconBadge
-                  MainElement={
-                      <View style={{width:35,height:50,justifyContent: 'center',}}>
-                        <Icon name='bell' size={28} style={{marginRight:10,color:'#fff'}}/>
-                      </View>    
-                  }
-                  BadgeElement={
-                      <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
-                  }
-                  Hidden={this.props.notifState.notif_count==0}/>
-          </TouchableOpacity>
+            <ContainBadge
+               onPress={this.handleNotif}/>
         </View>
       
         <View style={{flex:1,width:"90%", flexDirection:'row',padding:5,}}>

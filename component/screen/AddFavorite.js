@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import IconBadge from 'react-native-icon-badge';
 import { connect } from 'react-redux';
 import {createStore, applyMiddleware, combineReducers, bindActionCreators} from "redux";
+import ContainBadge from '../../container/ContainBadge'
 import * as appActions from '../redux/actions';
 import _ from 'lodash';
 
@@ -68,10 +69,6 @@ class AddFavorite extends Component {
     this.setState({comments: text})
   };
 
-  handleNotif = () => {
-    this.props.navigation.navigate('Notifications')
-  }
-
   handleSave = () => {
     if(this.state.email == null || this.state.email.trim() == ""){
       Alert.alert("Error","Please Fill a valid Email!");
@@ -83,6 +80,10 @@ class AddFavorite extends Component {
       Alert.alert("Success","Your comments has been saved!");
       this.textClear()
     }
+  }
+
+  handleNotif = () => {
+    this.props.navigation.navigate('Notifications')
   }
 
   componentDidMount = () => {
@@ -99,18 +100,8 @@ class AddFavorite extends Component {
         <View style={{backgroundColor:'steelblue',width:"100%", height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
           <View style={{width:50}}/>
           <Image source={require('../images/splashMovie.png')} style={{alignSelf:'center',width:100,height:80,resizeMode:'contain',}}/>
-            <TouchableOpacity onPress={this.handleNotif}>          
-              <IconBadge
-                MainElement={
-                    <View style={{width:35,height:50,justifyContent: 'center',}}>      
-                      <Icon name='bell' size={28} style={{marginRight:10,color:'#fff'}}/>
-                    </View>
-                }
-                BadgeElement={
-                    <Text style={{color:'#FFFFFF'}}>{this.props.notifState.notif_count}</Text>
-                }
-                Hidden={this.props.notifState.notif_count==0}/>
-          </TouchableOpacity>
+            <ContainBadge
+               onPress={this.handleNotif}/>
         </View>
          
         <View style={{flex:1}}>

@@ -16,22 +16,22 @@ export default class LoginScreen extends Component {
   console.log(this.props)
   }
   
-  handleBackButton = () => {
-    Alert.alert(
-        'Exit App',
-        'Exiting the application?', [{
-            text: 'Cancel',
-            onPress: () => console.log('Cancel Pressed'),
-            style: 'cancel'
-        }, {
-            text: 'OK',
-            onPress: () => BackHandler.exitApp()
-        }, ], {
-            cancelable: false
-        }
-     )
-     return true;
-   } 
+  // handleBackButton = () => {
+  //   Alert.alert(
+  //       'Exit App',
+  //       'Exiting the application?', [{
+  //           text: 'Cancel',
+  //           onPress: () => console.log('Cancel Pressed'),
+  //           style: 'cancel'
+  //       }, {
+  //           text: 'OK',
+  //           onPress: () => BackHandler.exitApp()
+  //       }, ], {
+  //           cancelable: false
+  //       }
+  //    )
+  //    return true;
+  //  } 
    
    componentWillUnmount() {
     //  BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
