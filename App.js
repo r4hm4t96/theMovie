@@ -1,66 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React, {Component} from 'react';
 import { Platform, StyleSheet, Text, View, YellowBox, ScrollView, Image, AppRegistry, AsyncStorage} from 'react-native'
 import {DB_LOCAL_USER} from './component/property/constant';
-import SplashScreen from './component/screen/SplashScreen';
-import LoginScreen from './component/screen/LoginScreen';
-import HomeScreen from './component/screen//HomeScreen';
-import DetailMovie from './component/screen/DetailMovie';
-import AddFavorite from './component/screen/AddFavorite';
-import Notifications from './component/screen/NotificationScreen';
-// import NotificationsTest from './component/screen/NotificationTest';
 import firebase from 'react-native-firebase';
-import type { Notification, } from 'react-native-firebase';
-import {StackNavigator} from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, combineReducers} from "redux";
-//import store from './component/redux';
-import thunk from "redux-thunk";
-import * as reducers from './component/redux/reducers/index';
-import * as appActions from './component/redux/actions/index';
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
+import { PersistGate } from 'redux-persist/integration/react';
+import { createPersistStore } from './src/app/store';
+import { createNavComponent, navMiddleware } from './src/app/navigation/ReduxNavigation';
+import combinedReducers from './src/app/store/reducers';
+import SplashScreenComponent from './src/modules/Main/Component/SplashScreenComponent';
 
-// YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
-
-const Root = StackNavigator({
-  Splash:{
-    screen:SplashScreen
-  },
-  Login:{
-    screen:LoginScreen
-  },
-  Home:{
-    screen:HomeScreen
-  },
-  Detail:{
-    screen:DetailMovie
-  },
-  Favorite:{
-    screen:AddFavorite
-  },
-  Notifications:{
-    screen: Notifications
-  },
-  // NotificationsTest:{
-  //   screen: NotificationsTest
-  // }
-},{
-  initialRouteName: 'Home',
-  headerMode:"none"
-  
-})
+export const ReduxPersist = createPersistStore(combinedReducers, navMiddleware);
 
 export default class App extends Component {
-
 
   onNotificationClick = (notificationOpen) => {
     if(notificationOpen){
@@ -109,13 +63,6 @@ export default class App extends Component {
         });
       } 
     });
-
-    // FCM.on(event.notif)....{
-    //   //change badge
-    //   FCM.setBadge( badge => {
-    //   FCM.getBadge()+=1;
-    //   }).
-    //   }
     
     this.onTokenRefreshListener = firebase.messaging().onTokenRefresh(fcmToken => {
       // Process your token as required
@@ -155,9 +102,12 @@ export default class App extends Component {
   }
 
   render(){
+    const NavView = createNavComponent();
     return(
-      <Provider store={store}>
-        <Root/>
+      <Provider store={ReduxPersist.store}>
+        <PersistGate loading={<SplashScreenComponent />} persistor={ReduxPersist.persistor}>
+          <NavView/>
+        </PersistGate>
       </Provider>
     )
   }
